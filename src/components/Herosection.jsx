@@ -1,7 +1,7 @@
 import React from "react";
 import Button from "./Button";
 import heroImage from "../assets/CardScreens.png";
-import heroCard from "../assets/heroCard.png";
+import heroCard from "../assets/HeroCard.png";
 
 const Herosection = () => {
   return (
