@@ -9,7 +9,7 @@ import IconText from "./IconText";
 
 const Card = () => {
   return (
-    <div className="w-full  flex gap-10 items-center justify-center flex-col sm:flex-row px-4 sm:py-40 bg-[#10123D0A]">
+    <div className="w-full  flex gap-10 items-center justify-center flex-col sm:flex-row px-4 sm:py-40 bg-[#10123d15]">
       <img
         src={whyFalverra}
         className="w-[90%] object-center object-cover mx-10 rounded-2xl  bg-slate-300  sm:w-1/4 "

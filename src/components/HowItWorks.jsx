@@ -17,7 +17,7 @@ const HowItWorks = () => {
   ];
 
   return (
-    <section className="sm:py-40 py-16 px-4 bg-[#10123D0A]">
+    <section className="sm:py-40 py-16 px-4 bg-[#10123d13]">
       <h2 className="text-3xl font-bold text-center mb-12">How It Works</h2>
 
       <div className="relative flex flex-col sm:flex-row items-center justify-between max-w-5xl mx-auto">
