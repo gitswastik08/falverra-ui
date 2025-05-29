@@ -1,66 +1,80 @@
 import React, { useState } from "react";
 
-
 const Navbar = () => {
-  const [active, setActive] = useState("");
   const [toggle, setToggle] = useState(false);
 
+  const navItems = ["Home", "Services", "Pricing", "How It Works", "Blog"];
+
   return (
-    <nav
-      className={`sm:px-16 px-8  flex w-full sm:fixed sm:z-30 h-20 font-sans bg-white items-center justify-between  py-6`}
-    >
-      <h1 className="cursor-pointer text-2xl font-semibold text-[#6e6b6b]">
-        LOGO
-      </h1>
-      <div className="flex items-center justify-between w-[60%] ">
-        <ul className="sm:list-none text-nowrap sm:flex flex-row gap-10 text-[#00000094] hidden md:flex">
-          <li className="hover:text-black cursor-pointer">Home</li>
-          <li className="hover:text-black cursor-pointer">Services</li>
-          <li className="hover:text-black cursor-pointer">Pricing</li>
-          <li className="hover:text-black cursor-pointer block">
-            How It Works
+    <nav className="sm:px-16 px-6 w-full fixed z-30 bg-white shadow-md h-20 flex items-center justify-between">
+      <h1 className="text-2xl font-bold text-gray-700">LOGO</h1>
+
+      <ul className="hidden md:flex gap-10 text-gray-600 text-base font-medium">
+        {navItems.map((item) => (
+          <li
+            key={item}
+            className="hover:text-black cursor-pointer transition-colors duration-200"
+          >
+            {item}
           </li>
-          <li className="hover:text-black cursor-pointer">Blog</li>
-        </ul>
-        <div className="gap-0  flex ">
-          <button className="hover:border-[#c89100] text-[#c89100] border-2 border-transparent px-6 py-2 font-semibold text-sm sm:text-lg rounded-[1vw] cursor-pointer  ">
+        ))}
+      </ul>
+
+      <div className="hidden md:flex gap-4">
+        <button className="px-5 py-2 text-[#c89100] font-semibold border  hover:bg-[#c89100] hover:text-white rounded-full transition-all">
+          Login
+        </button>
+        <button className="px-5 py-2 text-[#c89100] font-semibold border  hover:bg-[#c89100] hover:text-white rounded-full transition-all">
+          Signup
+        </button>
+      </div>
+
+      <div className="md:hidden flex items-center">
+        <i
+          className={`ri-${
+            toggle ? "close-large-line" : "menu-line"
+          } text-2xl cursor-pointer`}
+          onClick={() => setToggle(!toggle)}
+        ></i>
+      </div>
+
+      <div
+        className={`fixed top-0 right-0 h-full w-3/4 sm:w-1/2 bg-white shadow-lg transition-transform duration-300 z-40 ${
+          toggle ? "translate-x-0" : "translate-x-full"
+        }`}
+      >
+        <div className="flex flex-col gap-8 p-6 ">
+          <div className="w-full flex items-center justify-end">
+            <i
+              class="ri-close-large-line text-2xl cursor-pointer"
+              onClick={() => setToggle(!toggle)}
+            ></i>
+          </div>
+          {navItems.map((item) => (
+            <p
+              key={item}
+              className="text-lg text-gray-700 font-medium hover:text-black cursor-pointer transition-all"
+            >
+              {item}
+            </p>
+          ))}
+
+          <hr className="border-gray-200" />
+
+          <button className="px-4 py-2 text-[#c89100]  hover:bg-[#c89100] hover:text-white font-semibold border border-[#c89100] rounded-full">
             Login
           </button>
-
-          <button className="hover:border-[#c89100] text-[#c89100] border-2 border-transparent px-6 py-2 text-sm sm:text-lg   font-semibold rounded-[1vw]  cursor-pointer   ">
-            Signup
-          </button>
-
-          <div className="sm:hidden flex flex-1 justify-end items-center">
-            <i
-              className={
-                toggle
-                  ? "ri-close-large-line text-2xl"
-                  : "ri-menu-line text-2xl"
-              }
-              onClick={() => {
-                setToggle(!toggle);
-              }}
-            ></i>
-
-            <div
-              className={`${
-                !toggle ? "hidden transition-all ease-in-out" : "flex"
-              } px-16 py  black-gradient absolute top-20  w-full h-screen  my-2 right-0 z-10 text-xl backdrop-blur-lg bg-white/30 p-6 rounded-lg flex justify-end items-start `}
-            >
-              <ul className="list-none flex justify-end text-[#0000009c] flex-col gap-9">
-                <li className="hover:text-black cursor-pointer">Home</li>
-                <li className="hover:text-black cursor-pointer">Services</li>
-                <li className="hover:text-black cursor-pointer">Pricing</li>
-                <li className="hover:text-black cursor-pointer block">
-                  How It Works
-                </li>
-                <li className="hover:text-black cursor-pointer">Blog</li>
-              </ul>
-            </div>
-          </div>
+          <button className="px-4 py-2 text-[#c89100] font-semibold border border-[#c89100]  hover:bg-[#c89100] hover:text-white rounded-full">SignUp</button>
         </div>
       </div>
+
+      {/* Background Blur Overlay */}
+      {toggle && (
+        <div
+          onClick={() => setToggle(false)}
+          className="fixed inset-0 bg-black/30 backdrop-blur-sm z-30"
+        ></div>
+      )}
     </nav>
   );
 };
